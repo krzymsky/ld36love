@@ -8,7 +8,9 @@ resources = {
   bg_img = love.graphics.newImage("res/bg.png"),
   slave1_img = love.graphics.newImage("res/slave1.png"),
   master_img = love.graphics.newImage("res/master.png"),
-  dust_img = love.graphics.newImage("res/dust.png")
+  dust_img = love.graphics.newImage("res/dust.png"),
+  whip_img = love.graphics.newImage("res/whip.png"),
+  whip_snd = love.audio.newSource("res/s_whip.wav")
 }
 
 function debugDraw()

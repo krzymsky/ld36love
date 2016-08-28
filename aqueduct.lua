@@ -95,6 +95,7 @@ function Aqueduct:init(game, x, y)
   end
 
   function Aqueduct:keypressed()
+    love.audio.play(resources.whip_snd)
     if self.windup_bar:isInGreenField() then
       self.current_build_speed = self.start_build_speed
       --Timer.clear()
