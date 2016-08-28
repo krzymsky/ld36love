@@ -34,6 +34,8 @@ function love.load()
 
   GameState.registerEvents()
   GameState.switch(game)
+
+  resources.whip_snd:setVolume(0.5)
 end
 
 function love.update(dt)
