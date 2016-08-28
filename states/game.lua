@@ -16,6 +16,8 @@ function game:enter()
   self.aqueduct2 = Aqueduct(self, 0, 240)
   --self.first_plan = FirstPlan(0, globals.height - 128)
   self.bg = Bg(0, 0)
+  love.audio.play(resources.work_snd)
+  resources.work_snd:setLooping(true)
 end
 
 function game:update(dt)

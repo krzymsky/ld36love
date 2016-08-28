@@ -10,7 +10,11 @@ resources = {
   master_img = love.graphics.newImage("res/master.png"),
   dust_img = love.graphics.newImage("res/dust.png"),
   whip_img = love.graphics.newImage("res/whip.png"),
-  whip_snd = love.audio.newSource("res/s_whip.wav")
+  arrow_img = love.graphics.newImage("res/arrow.png"),
+  bar_img = love.graphics.newImage("res/bar.png"),
+  whip_snd = love.audio.newSource("res/s_whip.wav"),
+  bonus_snd = love.audio.newSource("res/s_bonus.wav"),
+  work_snd = love.audio.newSource("res/s_WorkAmbience.wav")
 }
 
 function debugDraw()
@@ -36,6 +40,9 @@ function love.load()
   GameState.switch(game)
 
   resources.whip_snd:setVolume(0.5)
+  resources.work_snd:setVolume(0.3)
+
+
 end
 
 function love.update(dt)

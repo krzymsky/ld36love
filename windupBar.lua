@@ -21,14 +21,16 @@ function WindupBar:update(dt)
 end
 
 function WindupBar:draw()
-  love.graphics.setColor(255, 200, 0)
+  love.graphics.setColor(251, 242, 54)
   love.graphics.rectangle('fill', self.x, self.y, self.width*self.ratios[1], self.height)
-  love.graphics.setColor(0, 150, 0)
+  love.graphics.setColor(106, 190, 48)
   love.graphics.rectangle('fill', self.x+self.width*self.ratios[1], self.y, self.width*self.ratios[2], self.height)
-  love.graphics.setColor(255, 0, 0)
+  love.graphics.setColor(172, 50, 50)
   love.graphics.rectangle('fill', self.x+self.width*(self.ratios[1]+self.ratios[2]), self.y, self.width*self.ratios[3], self.height)
   love.graphics.setColor(255, 255, 255)
-  love.graphics.rectangle('fill', self.x+self.pointer, self.y - 10, 3, self.height)
+  love.graphics.draw(resources.bar_img, self.x,self.y)
+  love.graphics.draw(resources.arrow_img, self.x+self.pointer, self.y - 16)
+  --love.graphics.rectangle('fill', self.x+self.pointer, self.y - 10, 3, self.height)
 end
 
 function WindupBar:isInGreenField()
