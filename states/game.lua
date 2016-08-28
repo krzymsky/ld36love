@@ -12,8 +12,8 @@ end
 
 function game:enter()
   self.camera_x = 0
-  self.aqueduct1 = Aqueduct(self, 0, 150)
-  self.aqueduct2 = Aqueduct(self, 0, 240)
+  self.aqueduct1 = Aqueduct(self, 0, 120)
+  self.aqueduct2 = Aqueduct(self, 0, 258)
   --self.first_plan = FirstPlan(0, globals.height - 128)
   self.bg = Bg(0, 0)
   love.audio.play(resources.work_snd)

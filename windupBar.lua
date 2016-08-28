@@ -7,8 +7,8 @@ WindupBar = Class {}
 function WindupBar:init(x, y)
   self.x = x
   self.y = y
-  self.width = 50
-  self.height = 10
+  self.width = 110
+  self.height = 19
   self.ratios = {0.6, 0.2, 0.2}
   self.pointer = 0
 end
@@ -28,8 +28,8 @@ function WindupBar:draw()
   love.graphics.setColor(172, 50, 50)
   love.graphics.rectangle('fill', self.x+self.width*(self.ratios[1]+self.ratios[2]), self.y, self.width*self.ratios[3], self.height)
   love.graphics.setColor(255, 255, 255)
-  love.graphics.draw(resources.bar_img, self.x,self.y)
-  love.graphics.draw(resources.arrow_img, self.x+self.pointer, self.y - 16)
+  love.graphics.draw(resources.bar_img, self.x - 7,self.y - 7)
+  love.graphics.draw(resources.arrow_img, self.x - 8+self.pointer, self.y - 23)
   --love.graphics.rectangle('fill', self.x+self.pointer, self.y - 10, 3, self.height)
 end
 
