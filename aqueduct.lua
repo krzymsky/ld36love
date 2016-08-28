@@ -20,7 +20,7 @@ function Aqueduct:init(game, x, y)
     self.container_count = 0
     self.next_x = 0
     self.timer = 0
-    self.windup_bar = WindupBar(self.x + 150, self.y - 30)
+    self.windup_bar = WindupBar(self.x + 150, self.y - 50)
     self.target_build_speed = 150
     self.target_build_speed_time = 1
     self.current_build_speed = self.build_speed
@@ -104,6 +104,7 @@ function Aqueduct:init(game, x, y)
   end
 
   function Aqueduct:keypressed()
+    love.audio.play(resources.whip_snd)
     if self.windup_bar:isInGreenField() then
       self.game:cameraShake()
       self.current_build_speed = self.start_build_speed
