@@ -13,6 +13,7 @@ function Aqueduct:init(game, x, y)
     self.x = x
     self.y = y
     self.length = 0
+    self.created_blocks = 0
     self.start_build_speed = 50
     self.build_speed = 50
     self.container = {}
@@ -23,11 +24,13 @@ function Aqueduct:init(game, x, y)
     self.target_build_speed = 150
     self.target_build_speed_time = 1
     self.current_build_speed = self.build_speed
+    self.water_length = 0
+    self.water_timer = 0
 
     self.slaves = {}
     self:generateSlaves(5)
 
-    self.master = Master(self.x, self.y - 12)
+    self.master = Master(self.game, self.x, self.y - 12)
 
     self.p = love.graphics.newParticleSystem(resources.dust_img, 5)
     self.p:setParticleLifetime(0.2, 1)
@@ -42,9 +45,13 @@ function Aqueduct:init(game, x, y)
   end
 
   function Aqueduct:update(dt)
-    self.length = self.length + self.build_speed * dt
-    if self.container_count*globals.block_size <= self.length then
-      self:buildBlock(true)
+    self.water_timer = self.water_timer * dt
+    if not self.game.game_finish then
+      self.water_length = self.game.winner.length - 100 + self.water_timer*10
+      self.length = self.length + self.build_speed * dt
+      if self.container_count*globals.block_size <= self.length then
+        self:buildBlock(true)
+      end
     end
     self.windup_bar:update(dt)
 
@@ -74,8 +81,8 @@ function Aqueduct:init(game, x, y)
     end
     --love.graphics.setColor(255, 255, 255)
     --love.graphics.rectangle('fill', self.x, self.y, self.length, 4)
-    love.graphics.setColor(0, 100, 255)
-    love.graphics.rectangle('fill', self.x, self.y + 7, self.length - 200, 17)
+    love.graphics.setColor(99, 155, 255)
+    love.graphics.rectangle('fill', self.x, self.y + 7, self.water_length, 17)
     love.graphics.setColor(255, 255, 255)
 
     for _,o in ipairs(self.slaves) do
@@ -92,10 +99,13 @@ function Aqueduct:init(game, x, y)
     self.next_x = self.next_x + globals.block_size
     self.p:setPosition(self.length - self.game.camera_x, self.y+20)
     self.p:emit(5)
+    self.created_blocks = self.created_blocks + 1
+    print(self.created_blocks)
   end
 
   function Aqueduct:keypressed()
     if self.windup_bar:isInGreenField() then
+      self.game:cameraShake()
       self.current_build_speed = self.start_build_speed
       --Timer.clear()
       Timer.tween(0.3, self, {build_speed = self.target_build_speed}, 'linear',
@@ -113,7 +123,7 @@ function Aqueduct:init(game, x, y)
 
   function Aqueduct:generateSlaves(count)
     for i=1,count do
-      slave = Slave(self.x + love.math.random(-50, 50), self.y - 12)
+      slave = Slave(self.game, self.x + love.math.random(-50, 50), self.y - 12)
       table.insert(self.slaves, slave)
     end
   end

@@ -3,10 +3,11 @@ require 'globals'
 
 Bg = Class {}
 
-function Bg:init(x, y)
+function Bg:init(game, x, y)
   self.x = x
   self.y = y
   self.container = {}
+  self.game = game
 
   table.insert(self.container, {x = 0})
   self:addImg()
@@ -16,6 +17,9 @@ function Bg:init(x, y)
 end
 
 function Bg:update(dt, speed)
+  if self.game.game_finish then
+    return
+  end
   for i=#self.container,1,-1 do
     self.container[i].x = self.container[i].x - speed*dt
     if self.container[i].x < -256 then

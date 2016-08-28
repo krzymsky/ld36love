@@ -5,7 +5,8 @@ require 'globals'
 
 Master = Class {}
 
-function Master:init(x, y)
+function Master:init(game, x, y)
+  self.game = game
   self.x = x
   self.y = y
   self.delta = 0
@@ -23,7 +24,9 @@ function Master:update(dt, x)
   --if self.anim then
   --  self.animation:update(dt)
   --end
-  self.x = x + self.delta - 100
+  if not self.game.game_finish then
+    self.x = x + self.delta - 100
+  end
   --self.y = self.y + self.delta
 end
 
