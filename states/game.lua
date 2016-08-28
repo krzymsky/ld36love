@@ -45,7 +45,7 @@ function game:draw()
   self.aqueduct2:drawWindupBar()
   --self.first_plan:draw()
   love.graphics.setCanvas()
-  love.graphics.draw(self.canvas, 0, 0, 0, 2, 2)
+  love.graphics.draw(self.canvas, 0, 0, 0, 3, 3)
   debugDraw()
 end
 

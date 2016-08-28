@@ -6,7 +6,6 @@ resources = {
   aqueduct_block_img = love.graphics.newImage("res/aqueduct_block.png"),
   first_plan_img = love.graphics.newImage("res/first_plan.png"),
   bg_img = love.graphics.newImage("res/bg.png"),
-  slave1_img = love.graphics.newImage("res/slave1.png"),
   master_img = love.graphics.newImage("res/master.png"),
   dust_img = love.graphics.newImage("res/dust.png"),
   whip_img = love.graphics.newImage("res/whip.png"),
@@ -14,7 +13,31 @@ resources = {
   bar_img = love.graphics.newImage("res/bar.png"),
   whip_snd = love.audio.newSource("res/s_whip.wav"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
-  work_snd = love.audio.newSource("res/s_WorkAmbience.wav")
+  work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
+
+  slaves = {
+  love.graphics.newImage("res/slave1.png"),
+  love.graphics.newImage("res/slave2.png"),
+  love.graphics.newImage("res/slave3.png"),
+  love.graphics.newImage("res/slave4.png"),
+  love.graphics.newImage("res/slave5.png"),
+  love.graphics.newImage("res/slave6.png"),
+  love.graphics.newImage("res/slave7.png"),
+  love.graphics.newImage("res/slave8.png"),
+  love.graphics.newImage("res/slave9.png"),
+  love.graphics.newImage("res/slave10.png"),
+  love.graphics.newImage("res/slave11.png"),
+  love.graphics.newImage("res/slave12.png"),
+  love.graphics.newImage("res/slave13.png"),
+  love.graphics.newImage("res/slave14.png"),
+  love.graphics.newImage("res/slave15.png"),
+  love.graphics.newImage("res/slave16.png"),
+  love.graphics.newImage("res/slave17.png"),
+  love.graphics.newImage("res/slave18.png"),
+  love.graphics.newImage("res/slave19.png"),
+  love.graphics.newImage("res/slave20.png"),
+  love.graphics.newImage("res/slave21.png"),
+  }
 }
 
 function debugDraw()

@@ -11,6 +11,7 @@ function Slave:init(x, y)
   self.delta = 0
   self.delta2 = 0
   self.randseed = love.math.random(0, globals.block_size)
+  self.id = love.math.random(1,21)
   --self.anim = anim
   --local g = anim8.newGrid(64,64,resources.aqueduct_block_img:getWidth(), resources.aqueduct_block_img:getHeight())
   --self.animation = anim8.newAnimation(g('1-4', 1), 0.15, 'pauseAtEnd')
@@ -34,5 +35,5 @@ function Slave:draw()
   --  self.animation:draw(resources.aqueduct_block_img, self.x, self.y)
   --else
   --  self.animationLast:draw(resources.aqueduct_block_img, self.x, self.y)
-  love.graphics.draw(resources.slave1_img, self.x, self.y + self.delta2*0.5)
+  love.graphics.draw(resources.slaves[self.id], self.x, self.y + self.delta2*0.5)
 end
