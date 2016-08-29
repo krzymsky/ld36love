@@ -6,10 +6,11 @@ require 'whip'
 
 Master = Class {}
 
-function Master:init(game, x, y)
+function Master:init(game, x, y, id)
   self.game = game
   self.x = x
   self.y = y
+  self.id = id
   self.delta = 0
   self.delta2 = 0
   self.randseed = love.math.random(0, globals.block_size)
@@ -26,7 +27,7 @@ function Master:update(dt, x)
   --if self.anim then
   --  self.animation:update(dt)
   --end
-  if not self.game.game_finish then
+  if not self.game.game_finish and self.game.game_started then
     self.x = x + self.delta - 100
     self.whip:update(dt, self)
   end
@@ -40,6 +41,8 @@ function Master:draw()
   --  self.animation:draw(resources.aqueduct_block_img, self.x, self.y)
   --else
   --  self.animationLast:draw(resources.aqueduct_block_img, self.x, self.y)
-  love.graphics.draw(resources.master_img, self.x, self.y + self.delta2*0.5)
-  self.whip:draw()
+  love.graphics.draw(resources.slaves[self.id], self.x, self.y + self.delta2*0.5)
+  if not self.game.game_finish and self.game.game_started then
+    self.whip:draw()
+  end
 end

@@ -25,7 +25,7 @@ function Slave:update(dt, x)
   --if self.anim then
   --  self.animation:update(dt)
   --end
-  if not self.game.game_finish then
+  if not self.game.game_finish and self.game.game_started then
     self.x = x + self.delta - 50
   end
   --self.y = self.y + self.delta

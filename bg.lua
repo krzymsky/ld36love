@@ -18,7 +18,7 @@ function Bg:init(game, x, y)
 end
 
 function Bg:update(dt, speed)
-  if self.game.game_finish then
+  if self.game.game_finish or not self.game.game_started then
     return
   end
   for i=#self.container,1,-1 do

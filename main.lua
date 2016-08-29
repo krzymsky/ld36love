@@ -1,12 +1,13 @@
 local debugGraph = require 'lib.debugGraph'
 local GameState = require 'lib.hump.gamestate'
 
+love.graphics.setDefaultFilter("nearest", "nearest")
+
 resources = {
   font = love.graphics.newFont(10),
   aqueduct_block_img = love.graphics.newImage("res/aqueduct_block.png"),
   first_plan_img = love.graphics.newImage("res/first_plan.png"),
   bg_img = love.graphics.newImage("res/bg.png"),
-  master_img = love.graphics.newImage("res/master.png"),
   dust_img = love.graphics.newImage("res/dust.png"),
   whip_img = love.graphics.newImage("res/Whip.png"),
   arrow_img = love.graphics.newImage("res/arrow.png"),
@@ -25,9 +26,10 @@ resources = {
   work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
   theme_snd = love.audio.newSource("res/s_theme.wav"),
 
-  times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 200),
+  times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 16),
 
   slaves = {
+  love.graphics.newImage("res/master.png"),
   love.graphics.newImage("res/slave1.png"),
   love.graphics.newImage("res/slave2.png"),
   love.graphics.newImage("res/slave3.png"),
@@ -72,17 +74,17 @@ function love.load()
   font = love.graphics.newFont(8)
 
   GameState.registerEvents()
-  GameState.switch(game)
+  GameState.switch(mainmenu)
 
   resources.whip_snd1:setVolume(0.5)
   resources.whip_snd2:setVolume(0.5)
   resources.work_snd:setVolume(0.3)
+  resources.bonus_snd:setVolume(0.3)
 
   fullscreen_mode = false
 
-  love.audio.play(resources.theme_snd)
+  --love.audio.play(resources.theme_snd)
   resources.theme_snd:setLooping(true)
-
 end
 
 function love.update(dt)
@@ -98,14 +100,14 @@ function love.keypressed(key)
   if key == 'escape' then
     love.event.quit()
   end
-  if key == '1' then
-    GameState.switch(mainmenu)
-  end
-  if key == '2' then
-    GameState.switch(game)
-  end
   if key == 'f' then
     fullscreen_mode = not fullscreen_mode
     love.window.setFullscreen(fullscreen_mode)
+  end
+  if key == 'r' then
+    GameState.switch(mainmenu)
+  end
+  if key == 'return' then
+    GameState.switch(game)
   end
 end

@@ -7,8 +7,8 @@ Popup = Class {}
 function Popup:init(x, y)
   self.x = x
   self.y = y
-  self.width = 200
-  self.height = 120
+  self.width = 128
+  self.height = 128
   self.visible = false
   self.text = ""
 end
@@ -18,14 +18,22 @@ end
 
 function Popup:draw()
   if self.visible then
-    love.graphics.setColor(0, 0, 0)
-    love.graphics.rectangle('fill', self.x, self.y, self.width, self.height)
+    love.graphics.setColor(0, 0, 0, 190)
+    love.graphics.rectangle('fill', 0, 0, globals.screen_width, globals.screen_height)
     love.graphics.setColor(255, 255, 255)
-    love.graphics.print(self.text, self.x + self.width/2, self.y + self.height/2)
+    love.graphics.draw(resources.popup_img, self.x - 64, self.y - 64)
+    love.graphics.setFont(resources.times_fnt)
+    love.graphics.setColor(0, 0, 0)
+    love.graphics.printf(self.text, self.x - 64, self.y - 30, 128, "center")
+    love.graphics.setColor(255, 255, 255)
   end
 end
 
 function Popup:show(text)
   self.text = text
   self.visible = true
+end
+
+function Popup:hide()
+  self.visible = false
 end
