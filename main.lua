@@ -20,6 +20,15 @@ resources = {
   pickaxe_img = love.graphics.newImage("res/pickaxe.png"),
   popup_img = love.graphics.newImage("res/popup.png"),
 
+  button_a_img = love.graphics.newImage("res/button_a.png"),
+  button_s_img = love.graphics.newImage("res/button_s.png"),
+  button_d_img = love.graphics.newImage("res/button_d.png"),
+  button_r_img = love.graphics.newImage("res/button_r.png"),
+  button_enter_img = love.graphics.newImage("res/button_enter.png"),
+  button_left_img = love.graphics.newImage("res/button_left.png"),
+  button_down_img = love.graphics.newImage("res/button_down.png"),
+  button_right_img = love.graphics.newImage("res/button_right.png"),
+
   whip_snd1 = love.audio.newSource("res/s_whip.wav", "stream"),
   whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
