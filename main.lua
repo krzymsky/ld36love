@@ -30,11 +30,11 @@ resources = {
   button_down_img = love.graphics.newImage("res/button_down.png"),
   button_right_img = love.graphics.newImage("res/button_right.png"),
 
-  whip_snd1 = love.audio.newSource("res/s_whip.wav", "stream"),
-  whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),
-  bonus_snd = love.audio.newSource("res/s_bonus.wav"),
-  work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
-  theme_snd = love.audio.newSource("res/s_theme.wav"),
+  whip_snd1 = love.audio.newSource("res/s_whip.mp3", "stream"),
+  whip_snd2 = love.audio.newSource("res/s_whip.mp3", "stream"),
+  bonus_snd = love.audio.newSource("res/s_bonus.mp3"),
+  work_snd = love.audio.newSource("res/s_WorkAmbience.mp3"),
+  theme_snd = love.audio.newSource("res/s_theme.mp3"),
 
   times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 16),
 

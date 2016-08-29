@@ -11,7 +11,7 @@ require 'bonusBlock'
 
 function game:init()
   self.canvas = love.graphics.newCanvas(globals.screen_width, globals.screen_height)
-  self.game_length = 30
+  self.game_length = 60
   self.shake_x = 0
 end
 
@@ -147,7 +147,7 @@ end
 
 function game:gameFinish()
   self.game_finish = true
-  self.popup:show("THE WINNER IS\n"..self.winner.name.."\n\npress R to restart")
+  self.popup:show("THE WINNER IS\n"..self.winner.name.."\n\n       to restart", true)
   love.audio.stop(resources.work_snd)
 end
 
