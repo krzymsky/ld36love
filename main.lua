@@ -19,6 +19,7 @@ resources = {
   axe_img = love.graphics.newImage("res/axe.png"),
   pickaxe_img = love.graphics.newImage("res/pickaxe.png"),
   popup_img = love.graphics.newImage("res/popup.png"),
+  town_img = love.graphics.newImage("res/town.png"),
 
   whip_snd1 = love.audio.newSource("res/s_whip.wav", "stream"),
   whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),

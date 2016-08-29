@@ -11,7 +11,7 @@ require 'bonusBlock'
 
 function game:init()
   self.canvas = love.graphics.newCanvas(globals.screen_width, globals.screen_height)
-  self.game_length = 100
+  self.game_length = 30
   self.shake_x = 0
 end
 
@@ -50,7 +50,9 @@ function game:update(dt)
   else
     self.winner = self.aqueduct2
   end
-  self.camera_x = math.floor(self.winner.length - 300)
+  if self.winner.created_blocks < (self.game_length - 3) then
+    self.camera_x = math.floor(self.winner.length - 350)
+  end
   self.aqueduct1:update(dt)
   self.aqueduct2:update(dt)
   --self.first_plan:update(dt)
@@ -107,6 +109,9 @@ function game:draw()
   if self.bonus_block then
     self.bonus_block:draw()
   end
+
+  love.graphics.draw(resources.town_img, (self.game_length - 2)*globals.block_size, 120)
+
   self.aqueduct1:draw()
   self.aqueduct2:draw()
   if self.bonus_block then
@@ -160,7 +165,7 @@ function game:cameraShake()
 end
 
 function game:generateBonusBlock()
-  if not self.bonus_block then
+  if not self.bonus_block and self.winner.created_blocks < (self.game_length-4) then
     self.bonus_block = BonusBlock(self, self.camera_x + globals.screen_width/2, self.aqueduct1.y)
   end
 end

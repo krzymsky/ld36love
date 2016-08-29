@@ -69,7 +69,7 @@ function Aqueduct:init(game, x, y, snd, name, id)
     self:buildBlock(false)
     self:buildBlock(false)
     self:buildBlock(false)
-    self.length = 300
+    self.length = 350
 
     self.has_bonus = false
     self.bonus_timer = 0
@@ -136,7 +136,7 @@ function Aqueduct:init(game, x, y, snd, name, id)
     love.graphics.setColor(99, 155, 255)
     love.graphics.rectangle('fill', self.game.camera_x, self.y + 7, self.water_length, 17)
     love.graphics.setColor(255, 255, 255)
-    
+
     for _,o in ipairs(self.slaves) do
       o:draw()
     end

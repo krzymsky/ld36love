@@ -21,11 +21,13 @@ function Bg:update(dt, speed)
   if self.game.game_finish or not self.game.game_started then
     return
   end
-  for i=#self.container,1,-1 do
-    self.container[i].x = self.container[i].x - speed*dt
-    if self.container[i].x < -256 then
-      table.remove(self.container, i)
-      self:addImg()
+  if self.game.winner.created_blocks < (self.game.game_length - 3) then
+    for i=#self.container,1,-1 do
+      self.container[i].x = self.container[i].x - speed*dt
+      if self.container[i].x < -256 then
+        table.remove(self.container, i)
+        self:addImg()
+      end
     end
   end
 end
