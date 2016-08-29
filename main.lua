@@ -2,15 +2,18 @@ local debugGraph = require 'lib.debugGraph'
 local GameState = require 'lib.hump.gamestate'
 
 resources = {
-  smallFont = love.graphics.newFont(10),
+  font = love.graphics.newFont(10),
   aqueduct_block_img = love.graphics.newImage("res/aqueduct_block.png"),
   first_plan_img = love.graphics.newImage("res/first_plan.png"),
   bg_img = love.graphics.newImage("res/bg.png"),
   master_img = love.graphics.newImage("res/master.png"),
   dust_img = love.graphics.newImage("res/dust.png"),
-  whip_img = love.graphics.newImage("res/whip.png"),
+  whip_img = love.graphics.newImage("res/Whip.png"),
   arrow_img = love.graphics.newImage("res/arrow.png"),
   bar_img = love.graphics.newImage("res/bar.png"),
+  bonus_block_img = love.graphics.newImage("res/BonusBlock.png"),
+  bonus_guy_img = love.graphics.newImage("res/BonusGuy.png"),
+  bonus_chest_img = love.graphics.newImage("res/BonusChest.png"),
   whip_snd = love.audio.newSource("res/s_whip.wav"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
   work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
@@ -65,7 +68,7 @@ function love.load()
   resources.whip_snd:setVolume(0.5)
   resources.work_snd:setVolume(0.3)
 
-
+  fullscreen_mode = false
 end
 
 function love.update(dt)
@@ -86,5 +89,9 @@ function love.keypressed(key)
   end
   if key == '2' then
     GameState.switch(game)
+  end
+  if key == 'f' then
+    fullscreen_mode = not fullscreen_mode
+    love.window.setFullscreen(fullscreen_mode)
   end
 end

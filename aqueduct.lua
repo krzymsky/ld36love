@@ -8,7 +8,7 @@ require 'master'
 
 Aqueduct = Class {}
 
-function Aqueduct:init(game, x, y)
+function Aqueduct:init(game, x, y, name)
     self.game = game
     self.x = x
     self.y = y
@@ -26,6 +26,7 @@ function Aqueduct:init(game, x, y)
     self.current_build_speed = self.build_speed
     self.water_length = 0
     self.water_timer = 0
+    self.name = name
 
     self.slaves = {}
     self:generateSlaves(5)
@@ -41,13 +42,26 @@ function Aqueduct:init(game, x, y)
 
     self:buildBlock(false)
     self:buildBlock(false)
-    self.length = 256
+    self:buildBlock(false)
+    self.length = 300
   end
 
   function Aqueduct:update(dt)
-    self.water_timer = self.water_timer * dt
+    self.water_timer = self.water_timer + dt
     if not self.game.game_finish then
-      self.water_length = self.game.winner.length - 100 + self.water_timer*10
+      if self.build_speed > self.start_build_speed then
+        if self.water_length > 40 then
+          self.water_length = self.water_length - 40*dt
+        else
+          self.water_length = 40
+        end
+      else
+        self.water_length = self.water_length + 40*dt
+      end
+      if self.water_length > (self.length - self.game.camera_x) then
+        self.water_length = self.length - self.game.camera_x
+        self.game:gameFinish()
+      end
       self.length = self.length + self.build_speed * dt
       if self.container_count*globals.block_size <= self.length then
         self:buildBlock(true)
@@ -72,7 +86,6 @@ function Aqueduct:init(game, x, y)
 
   function Aqueduct:drawWindupBar()
     self.windup_bar:draw()
-    love.graphics.draw(self.p,0,0)
   end
 
   function Aqueduct:draw()
@@ -82,7 +95,7 @@ function Aqueduct:init(game, x, y)
     --love.graphics.setColor(255, 255, 255)
     --love.graphics.rectangle('fill', self.x, self.y, self.length, 4)
     love.graphics.setColor(99, 155, 255)
-    love.graphics.rectangle('fill', self.x, self.y + 7, self.water_length, 17)
+    love.graphics.rectangle('fill', self.game.camera_x, self.y + 7, self.water_length, 17)
     love.graphics.setColor(255, 255, 255)
 
     for _,o in ipairs(self.slaves) do
@@ -90,6 +103,8 @@ function Aqueduct:init(game, x, y)
     end
 
     self.master:draw()
+
+    love.graphics.draw(self.p,0,0)
   end
 
   function Aqueduct:buildBlock(anim)
@@ -107,6 +122,7 @@ function Aqueduct:init(game, x, y)
     love.audio.play(resources.whip_snd)
     if self.windup_bar:isInGreenField() then
       self.game:cameraShake()
+      --self.water_timer = self.water_timer - 10
       self.current_build_speed = self.start_build_speed
       --Timer.clear()
       Timer.tween(0.3, self, {build_speed = self.target_build_speed}, 'linear',

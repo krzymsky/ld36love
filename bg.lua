@@ -13,7 +13,8 @@ function Bg:init(game, x, y)
   self:addImg()
   self:addImg()
   self:addImg()
-  --self:addImg()
+  self:addImg()
+  self:addImg()
 end
 
 function Bg:update(dt, speed)

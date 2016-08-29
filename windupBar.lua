@@ -14,7 +14,7 @@ function WindupBar:init(x, y)
 end
 
 function WindupBar:update(dt)
-  self.pointer = self.pointer + 60*dt
+  self.pointer = self.pointer + 80*dt
   if self.pointer >= self.width then
     self.pointer = self.width
   end
