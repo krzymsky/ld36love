@@ -8,7 +8,7 @@ require 'master'
 
 Aqueduct = Class {}
 
-function Aqueduct:init(game, x, y, name)
+function Aqueduct:init(game, x, y, snd, name)
     self.game = game
     self.x = x
     self.y = y
@@ -27,6 +27,7 @@ function Aqueduct:init(game, x, y, name)
     self.water_length = 0
     self.water_timer = 0
     self.name = name
+    self.snd = snd
 
     self.slaves = {}
     self:generateSlaves(5)
@@ -39,6 +40,30 @@ function Aqueduct:init(game, x, y, name)
     self.p:setAreaSpread('normal', 20, 10)
     --self.p:setColors(255, 255, 255, 255, 255, 255, 255, 0)
     self.p:setSizes(1,0)
+
+    self.p_hammer = love.graphics.newParticleSystem(resources.hammer_img, 1)
+    self.p_hammer:setParticleLifetime(0.2, 1)
+    self.p_hammer:setAreaSpread('normal', 10, 20)
+    self.p_hammer:setLinearAcceleration(-150, 50, -10, 150)
+    self.p_hammer:setRotation(40, 100)
+    self.p_hammer:setSpin(0, 20)
+    self.p_hammer:setSpeed(-50, -20)
+
+    self.p_axe = love.graphics.newParticleSystem(resources.axe_img, 1)
+    self.p_axe:setParticleLifetime(0.2, 1)
+    self.p_axe:setAreaSpread('normal', 10, 20)
+    self.p_axe:setLinearAcceleration(-150, 50, -50, 100)
+    self.p_axe:setRotation(60, 180)
+    self.p_axe:setSpin(0, 20)
+    self.p_axe:setSpeed(20, 60)
+
+    self.p_pickaxe = love.graphics.newParticleSystem(resources.pickaxe_img, 1)
+    self.p_pickaxe:setParticleLifetime(0.2, 1)
+    self.p_pickaxe:setAreaSpread('normal', 10, 20)
+    self.p_pickaxe:setLinearAcceleration(-120, 20, -20, 130)
+    self.p_pickaxe:setRotation(40, 130)
+    self.p_pickaxe:setSpin(0, 20)
+    self.p_pickaxe:setSpeed(-20, 20)
 
     self:buildBlock(false)
     self:buildBlock(false)
@@ -82,10 +107,17 @@ function Aqueduct:init(game, x, y, name)
     self.master:update(dt, self.length)
 
     self.p:update(dt)
+    self.p_hammer:update(dt)
+    self.p_axe:update(dt)
+    self.p_pickaxe:update(dt)
   end
 
   function Aqueduct:drawWindupBar()
     self.windup_bar:draw()
+    love.graphics.draw(self.p,0,0)
+    love.graphics.draw(self.p_hammer,0,0)
+    love.graphics.draw(self.p_axe, 0,0)
+    love.graphics.draw(self.p_pickaxe, 0,0)
   end
 
   function Aqueduct:draw()
@@ -114,12 +146,24 @@ function Aqueduct:init(game, x, y, name)
     self.next_x = self.next_x + globals.block_size
     self.p:setPosition(self.length - self.game.camera_x, self.y+20)
     self.p:emit(5)
+    self.p_hammer:setPosition(self.length - self.game.camera_x, self.y+20)
+    self.p_hammer:emit(1)
+    self.p_axe:setPosition(self.length - self.game.camera_x, self.y+20)
+    self.p_axe:emit(1)
+    self.p_pickaxe:setPosition(self.length - self.game.camera_x, self.y+20)
+    self.p_pickaxe:emit(1)
     self.created_blocks = self.created_blocks + 1
     print(self.created_blocks)
   end
 
   function Aqueduct:keypressed()
-    love.audio.play(resources.whip_snd)
+
+    love.audio.play(self.snd)
+    if self.snd:isPlaying() then
+        self.snd:rewind()
+    end
+
+
     if self.windup_bar:isInGreenField() then
       self.game:cameraShake()
       --self.water_timer = self.water_timer - 10

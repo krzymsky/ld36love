@@ -21,8 +21,8 @@ end
 
 function game:enter()
   self.camera_x = 0
-  self.aqueduct1 = Aqueduct(self, 0, 120, "1")
-  self.aqueduct2 = Aqueduct(self, 0, 258, "2")
+  self.aqueduct1 = Aqueduct(self, 0, 120, resources.whip_snd1, "1")
+  self.aqueduct2 = Aqueduct(self, 0, 258, resources.whip_snd2, "2")
   self.hud = Hud(self, 20, 20)
   self.popup = Popup(320, 160)
   --self.first_plan = FirstPlan(0, globals.height - 128)

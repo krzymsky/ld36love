@@ -14,9 +14,17 @@ resources = {
   bonus_block_img = love.graphics.newImage("res/BonusBlock.png"),
   bonus_guy_img = love.graphics.newImage("res/BonusGuy.png"),
   bonus_chest_img = love.graphics.newImage("res/BonusChest.png"),
-  whip_snd = love.audio.newSource("res/s_whip.wav"),
+  hammer_img = love.graphics.newImage("res/hammer.png"),
+  axe_img = love.graphics.newImage("res/axe.png"),
+  pickaxe_img = love.graphics.newImage("res/pickaxe.png"),
+  popup_img = love.graphics.newImage("res/popup.png"),
+
+  whip_snd1 = love.audio.newSource("res/s_whip.wav", "stream"),
+  whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
   work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
+
+  times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 200),
 
   slaves = {
   love.graphics.newImage("res/slave1.png"),
@@ -65,7 +73,8 @@ function love.load()
   GameState.registerEvents()
   GameState.switch(game)
 
-  resources.whip_snd:setVolume(0.5)
+  resources.whip_snd1:setVolume(0.5)
+  resources.whip_snd2:setVolume(0.5)
   resources.work_snd:setVolume(0.3)
 
   fullscreen_mode = false
