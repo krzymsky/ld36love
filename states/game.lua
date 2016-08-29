@@ -125,7 +125,7 @@ function game:draw()
   self.popup:draw()
   love.graphics.setCanvas()
   love.graphics.draw(self.canvas, globals.screen_width, globals.screen_height, self.shake_x, 2, 2, globals.screen_width/2, globals.screen_height/2)
-  debugDraw()
+  --debugDraw()
 end
 
 function game:keypressed(key)
