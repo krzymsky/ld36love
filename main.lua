@@ -14,10 +14,14 @@ resources = {
   whip_img = love.graphics.newImage("res/whip.png"),
   arrow_img = love.graphics.newImage("res/arrow.png"),
   bar_img = love.graphics.newImage("res/bar.png"),
+  popup_img = love.graphics.newImage("res/popup.png"),
+
   whip_snd1 = love.audio.newSource("res/s_whip.wav", "stream"),
   whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
   work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
+
+  times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 200),
 
   slaves = {
   love.graphics.newImage("res/slave1.png"),
