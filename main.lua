@@ -83,7 +83,7 @@ function love.load()
 
   fullscreen_mode = false
 
-  --love.audio.play(resources.theme_snd)
+  love.audio.play(resources.theme_snd)
   resources.theme_snd:setLooping(true)
 end
 
