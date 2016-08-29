@@ -29,6 +29,8 @@ resources = {
   button_left_img = love.graphics.newImage("res/button_left.png"),
   button_down_img = love.graphics.newImage("res/button_down.png"),
   button_right_img = love.graphics.newImage("res/button_right.png"),
+  tutorial_img = love.graphics.newImage("res/tutorial.png"),
+  title_img = love.graphics.newImage("res/title.png"),
 
   whip_snd1 = love.audio.newSource("res/s_whip.mp3", "stream"),
   whip_snd2 = love.audio.newSource("res/s_whip.mp3", "stream"),
@@ -61,6 +63,9 @@ resources = {
   love.graphics.newImage("res/slave19.png"),
   love.graphics.newImage("res/slave20.png"),
   love.graphics.newImage("res/slave21.png"),
+  love.graphics.newImage("res/slave22.png"),
+  love.graphics.newImage("res/slave23.png"),
+  love.graphics.newImage("res/slave24.png"),
   }
 }
 

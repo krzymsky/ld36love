@@ -2,7 +2,7 @@ mainmenu = {}
 
 function mainmenu:init()
   self.min = 1
-  self.max = 22
+  self.max = 25
   self.player1_x = globals.screen_width/4 - 250
   self.player1_y = 160
   self.player2_x = globals.screen_width/4 + 120
