@@ -16,8 +16,8 @@ end
 
 function game:enter()
   self.camera_x = 0
-  self.aqueduct1 = Aqueduct(self, 0, 120)
-  self.aqueduct2 = Aqueduct(self, 0, 258)
+  self.aqueduct1 = Aqueduct(self, 0, 120, resources.whip_snd1)
+  self.aqueduct2 = Aqueduct(self, 0, 258, resources.whip_snd2)
   --self.first_plan = FirstPlan(0, globals.height - 128)
   self.bg = Bg(self, 0, 0)
   self.game_finish = false
