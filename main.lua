@@ -66,6 +66,8 @@ resources = {
   love.graphics.newImage("res/slave22.png"),
   love.graphics.newImage("res/slave23.png"),
   love.graphics.newImage("res/slave24.png"),
+  love.graphics.newImage("res/slave25.png"),
+  love.graphics.newImage("res/slave26.png")
   }
 }
 

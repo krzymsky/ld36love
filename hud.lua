@@ -8,7 +8,7 @@ function Hud:init(game, x, y)
   self.game = game
   self.x = x
   self.y = y
-  self.width = 650
+  self.width = 620
   self.player1 = 0
   self.player2 = 0
   self.offset = -3*(self.width/self.game.game_length) -- 3 block created in aqueduct at start

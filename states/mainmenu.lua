@@ -2,7 +2,7 @@ mainmenu = {}
 
 function mainmenu:init()
   self.min = 1
-  self.max = 25
+  self.max = 27
   self.player1_x = globals.screen_width/4 - 250
   self.player1_y = 160
   self.player2_x = globals.screen_width/4 + 120
@@ -60,6 +60,10 @@ function mainmenu:draw()
   love.graphics.draw(resources.button_down_img, self.player2_x + 25, self.player2_y + 110)
 
   love.graphics.draw(resources.button_enter_img, self.player1_x + 190, self.player1_y + 100)
+
+  love.graphics.draw(resources.title_img, self.player1_x + 250, 80, self.delta*0.5, 1, 1, 128, 64)
+
+  love.graphics.draw(resources.tutorial_img, self.player1_x + 230, 170, 0, 1, 1, 62, 25)
 
   love.graphics.setCanvas()
   love.graphics.draw(self.canvas, globals.screen_width, globals.screen_height, 0, 2, 2, globals.screen_width/2, globals.screen_height/2)
