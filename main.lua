@@ -23,6 +23,7 @@ resources = {
   whip_snd2 = love.audio.newSource("res/s_whip.wav", "stream"),
   bonus_snd = love.audio.newSource("res/s_bonus.wav"),
   work_snd = love.audio.newSource("res/s_WorkAmbience.wav"),
+  theme_snd = love.audio.newSource("res/s_theme.wav"),
 
   times_fnt = love.graphics.newFont("res/TimesNewPixel.ttf", 200),
 
@@ -78,6 +79,10 @@ function love.load()
   resources.work_snd:setVolume(0.3)
 
   fullscreen_mode = false
+
+  love.audio.play(resources.theme_snd)
+  resources.theme_snd:setLooping(true)
+
 end
 
 function love.update(dt)
